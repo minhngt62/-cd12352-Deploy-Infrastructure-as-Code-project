@@ -1,6 +1,14 @@
 [
-	{
-		"ParameterKey": "Add you parameters here",
-		"ParameterValue": "Add you parameters here"
-	}
+    {
+        "ParameterKey": "EnvironmentName",
+        "ParameterValue": "Udagram"
+    },
+    {
+        "ParameterKey": "S3BucketName",
+        "ParameterValue": "web-servers-bucket"
+    },
+    {
+        "ParameterKey":"GitHubRepoUrl",
+        "ParameterValue":"https://github.com/minhngt62/-cd12352-Deploy-Infrastructure-as-Code-project-static-content.git"
+    }    
 ]
