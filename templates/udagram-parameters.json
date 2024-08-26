@@ -9,6 +9,6 @@
     },
     {
         "ParameterKey":"GitHubRepoUrl",
-        "ParameterValue":"https://github.com/minhngt62/-cd12352-Deploy-Infrastructure-as-Code-project-static-content.git"
+        "ParameterValue":"github.com/minhngt62/-cd12352-Deploy-Infrastructure-as-Code-project-static-content.git"
     }    
 ]

@@ -56,10 +56,10 @@ Resources:
             sudo git clone https://${GitHubRepoUrl} /tmp/public
             sudo cp /tmp/public/index.html /usr/share/nginx/html/
             sudo service nginx start
-        ImageId: ami-0557a15b87f6559cf
+        ImageId: ami-085f9c64a9b75eed5
         SecurityGroupIds:
           - !Ref WebServerSecurityGroup
-        InstanceType: t3.small
+        InstanceType: t2.micro
         BlockDeviceMappings:
         - DeviceName: "/dev/sdk"
           Ebs:
@@ -93,7 +93,7 @@ Resources:
               - 's3:GetObject*'
               - 's3:DeleteObject*'
               Resource:
-               - !Sub "arn:aws:s3:::dbonnin-web-servers-bucket/*"
+               - !Sub "arn:aws:s3:::web-servers-bucket/*"
 
   WebServerInstanceProfile:
    Type: AWS::IAM::InstanceProfile
