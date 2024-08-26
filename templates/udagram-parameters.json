@@ -6,9 +6,5 @@
     {
         "ParameterKey": "S3BucketName",
         "ParameterValue": "web-servers-bucket"
-    },
-    {
-        "ParameterKey":"GitHubRepoUrl",
-        "ParameterValue":"github.com/minhngt62/-cd12352-Deploy-Infrastructure-as-Code-project-static-content.git"
-    }    
+    }  
 ]

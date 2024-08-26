@@ -8,10 +8,6 @@ Parameters:
     Type: String
     Description: S3 Bucket name    
 
-  GitHubRepoUrl:
-    Type: String
-    Description: GitHub Repo Url
-
 Resources:
 
   # Security groups
@@ -52,9 +48,25 @@ Resources:
             #!/bin/bash
             sudo apt-get update -y
             sudo apt-get install nginx -y
-            sudo apt-get install git -y
-            sudo git clone https://${GitHubRepoUrl} /tmp/public
-            sudo cp /tmp/public/index.html /usr/share/nginx/html/
+
+            WEB_DIR="/var/www/html"
+            
+            cat <<EOF > index.html
+            <!DOCTYPE html>
+            <html>
+            <head>
+                <title>It works! Udagram, Udacity</title>
+            </head>
+            <body>
+                <h1>It works! Udagram, Udacity</h1>
+                <p>This website is hosted on Nginx.</p>
+            </body>
+            </html>
+            EOF
+
+            sudo rm -r $WEB_DIR/index.*
+            sudo cp index.html $WEB_DIR
+
             sudo service nginx start
         ImageId: ami-085f9c64a9b75eed5
         SecurityGroupIds:
