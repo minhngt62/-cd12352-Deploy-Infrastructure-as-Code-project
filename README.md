@@ -1,6 +1,6 @@
 # CD12352 - Infrastructure as Code Project Solution
 
-## URLs
+## Application URLs
 
 We provide the URL of LoadBalancer and CloudFront:
 - LoadBalancer: http://udagra-webap-dgpbco5wlfjv-712150263.us-east-2.elb.amazonaws.com/
