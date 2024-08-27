@@ -1,49 +1,68 @@
-# ND9991 - Course 2 - Infrastructure as Code
+# CD12352 - Infrastructure as Code Project Solution
 
-This repository contains the starter code for the final project of course 2 Infrastructure as Code in the Cloud DevOps Engineer Nanodegree.
+## URLs
 
-Please note that all supporting material for this course can be found in [this Github repository](https://github.com/udacity/cd12352-Deploy-Infrastructure-as-Code).
+We provide the URL of LoadBalancer and CloudFront:
+- LoadBalancer: http://udagra-webap-dgpbco5wlfjv-712150263.us-east-2.elb.amazonaws.com/
+- CloudFront: https://d1kr7z6gdrfphm.cloudfront.net/
 
-# Deploy a high-availability web app using CloudFormation
+## Infrastructure diagram
+![alt](https://github.com/minhngt62/-cd12352-Deploy-Infrastructure-as-Code-project/blob/main/infrastructure_diagram.png)
 
-In this project, you’ll deploy web servers for a highly available web app using CloudFormation. You will write the code that creates and deploys the infrastructure and application for an Instagram-like app from the ground up. You will begin with deploying the networking components, followed by servers, security roles and software.  The procedure you follow here will become part of your portfolio of cloud projects. You’ll do it exactly as it’s done on the job - following best practices and scripting as much as possible. 
-
-## Getting Started
-
-### Dependencies
-
-1. AWS CLI installed and configured in your workspace using an AWS IAM role with Administrator permissions (as reviewed in the course).
-
-2. Access to a diagram creator software of your choice.
-
-3. Your favorite IDE or text editor ready to work.
-
-### Installation
-
-You can get started by cloning this repo in your local workspace:
-
+## Spin up instructions
 ```
-git clone git@github.com:udacity/-cd12352-Deploy-Infrastructure-as-Code-project.git
+  setup.bat deploy MessagingNetwork network.yml network-parameters.json us-east-2 default
+  setup.bat deploy Udagram udagram.yml udagram-parameters.json us-east-2 default
 ```
 
-## Testing
+## Tear down instructions
+```
+  setup.bat delete Udagram us-east-2 default
+  setup.bat delete MessagingNetwork us-east-2 default
+```
 
-No tests required for this project.
+## Other considerations
+1. `emptyS3`: Empty an S3 bucket.
+  
+    Usage: `setup.bat emptyS3 <S3BUCKET> <REGION> <PROFILE>`
+  
+    - `S3BUCKET`: The name of the S3 bucket to be emptied.
+    - `REGION`: The AWS region where the S3 bucket is located.
+    - `PROFILE`: The AWS CLI profile to be used.
 
-## Project Instructions
+2. `uploadS3`: Upload a file to an S3 bucket.
+    
+    Usage: `setup.bat uploadS3 <S3BUCKET> <REGION> <PROFILE> <FILE>`
+    
+    - `S3BUCKET`: The name of the S3 bucket to upload the file to.
+    - `REGION`: The AWS region where the S3 bucket is located.
+    - `PROFILE`: The AWS CLI profile to be used.
+    - `FILE`: The path to the file to be uploaded.
 
-1. Design your solution diagram using a tool of your choice and export it into an image file.
+3. `deploy`: Deploy a CloudFormation stack.
+    
+    Usage: `setup.bat deploy <STACK_NAME> <TEMPLATE_NAME> <PARMS_NAME> <REGION> <PROFILE>`
+    
+    - `STACK_NAME`: The name of the CloudFormation stack to be deployed.
+    - `TEMPLATE_NAME`: The path to the CloudFormation template file.
+    - `PARMS_NAME`: The path to the parameter file for the CloudFormation stack.
+    - `REGION`: The AWS region where the CloudFormation stack will be deployed.
+    - `PROFILE`: The AWS CLI profile to be used.
 
-2. Add all the CloudFormation networking resources and parameters to the `network.yml` and `network-parameters.json` files inside the `starter` folder of this repo.
+4. `delete`: Delete a CloudFormation stack.
+    
+    Usage: `setup.bat delete <STACK_NAME> <REGION> <PROFILE>`
+    
+    - `STACK_NAME`: The name of the CloudFormation stack to be deleted.
+    - `REGION`: The AWS region where the CloudFormation stack is located.
+    - `PROFILE`: The AWS CLI profile to be used.
 
-3. Add all the CloudFormation application resources and parameters to the `udagram.yml` and `udagram-parameters.json` files inside the `starter` folder of this repo.
-
-4. Create any required script files to automate spin up and tear down of the CloudFormation stacks.
-
-5. Update the README.md file in the `starter` folder with creation and deletion instructions, as well as any useful information regarding your solution.
-   
-6.  Submit your solution as a GitHub link or a zipped file containing the diagram image, CloudFormation yml and json files, automation scripts and README file.
-
-## License
-
-[License](LICENSE.txt)
+5. `preview`: Preview changes for a CloudFormation stack.
+    
+    Usage:   `setup.bat preview <STACK_NAME> <TEMPLATE_NAME> <PARMS_NAME> <REGION> <PROFILE>` 
+    
+    - `STACK_NAME`: The name of the CloudFormation stack to preview changes for.
+    - `TEMPLATE_NAME`: The path to the CloudFormation template file.
+    - `PARMS_NAME`: The path to the parameter file for the CloudFormation stack.
+    - `REGION`: The AWS region where the CloudFormation stack is located.
+    - `PROFILE`: The AWS CLI profile to be used.
